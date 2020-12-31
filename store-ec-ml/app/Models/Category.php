@@ -15,6 +15,7 @@ class Category extends Model
      */
     protected $with = ['translations'];
     protected $hidden = ['translations'];
+    public $timestamps=false;
 
     //make scope method to give only category where parent id null
     public function scopeParent($query)

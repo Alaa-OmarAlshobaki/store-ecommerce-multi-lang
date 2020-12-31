@@ -17,6 +17,7 @@ class CreatePhotosTable extends Migration
             $table->bigIncrements('id');
             $table->string('photo', 2083)->nullable();
             $table->unsignedBigInteger('product_id');
+            $table->string('photo_type', 2083)->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });

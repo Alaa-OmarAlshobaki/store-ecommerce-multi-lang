@@ -39,8 +39,10 @@
     <link href="{{asset('asset/admin/assets/'.getFolder().'//elements/breadcrumb.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('asset/admin/'.getFolderPlugins().'/editors/quill/quill.snow.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('asset/admin/'.getFolderPlugins().'/jquery-step/jquery.steps.css')}}">
-    	<!-- MATERIAL DESIGN ICONIC FONT -->
-	
+    <link href="{{asset('asset/admin/'.getFolderPlugins().'/lightbox/photoswipe.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('asset/admin/'.getFolderPlugins().'/lightbox/default-skin/default-skin.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('asset/admin/'.getFolderPlugins().'/plugins/lightbox/custom-photswipe.css')}}" rel="stylesheet" type="text/css" />
+    
     <style>
         /* #formValidate .wizard > .content {min-height: 25em;}
         #example-vertical.wizard > .content {min-height: 24.5em;} */

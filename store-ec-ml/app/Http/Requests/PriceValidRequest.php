@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Enumeration\PriceType;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PriceValidRequest extends FormRequest
@@ -24,11 +25,13 @@ class PriceValidRequest extends FormRequest
     public function rules()
     {
         return [
-            'price' => '',
-            'special_price' => '',
-            'special_price_type' => '',
-            'special_price_start' => '',
-            'special_price_end' => '',
+           'product_id' => 'required|exists:products,id',
+            'price' => 'required|min:0|numeric',
+            'special_price' => 'nullable|numeric',
+            //'special_price_type' => 'requests_with:special_price|in:'.PriceType::percent.','.PriceType::fixed,
+            'special_price_type' => 'required_with:special_price|in:fixed,percent',
+            'special_price_start' => 'nullable|required_with:special_price|date_format:Y-m-d',
+            'special_price_end' => 'nullable|required_with:special_price|date_format:Y-m-d',
 
         ];
     }

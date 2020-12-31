@@ -70,7 +70,7 @@
                             <div class="col-md-5 mb-6 invisible" id="cats_list">
                                 <label for="validationCustom02">@lang('admin/category.link')</label>
                                 <select class="form-control  basic"  name="parent_id"  >
-                                    <option selected="selected">select category</option>
+                                    <option >select category</option>
                                     @if ($cate && $cate->count() >0)
                                     @foreach($cate as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>

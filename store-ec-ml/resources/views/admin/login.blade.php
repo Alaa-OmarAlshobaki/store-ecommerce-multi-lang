@@ -10,7 +10,7 @@
                     <h1 class="">@section('title')Sign In @endsection</h1>
                     <p class="">Log in to your account to continue.</p>
                     
-                    <form class="text-left" action="{{Route('login')}}" method="post">
+                    <form class="text-left" action="{{Route('login.admin')}}" method="post">
                         @csrf
                         <div class="form">
 

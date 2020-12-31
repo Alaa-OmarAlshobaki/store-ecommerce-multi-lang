@@ -1,6 +1,0 @@
-@extends('admin.layout')
-@section('content')
-<!--  BEGIN CONTENT PART  -->
-{{@foe}}
-<!--  END CONTENT PART  -->
-@endsection

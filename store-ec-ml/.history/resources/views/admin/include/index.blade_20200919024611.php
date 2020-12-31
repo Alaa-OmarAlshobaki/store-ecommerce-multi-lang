@@ -1,1 +1,0 @@
-P@extends('name')

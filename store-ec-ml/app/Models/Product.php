@@ -47,7 +47,7 @@ class Product extends Model
     ///handle is_active
     public function getStatus()
     {
-        return $this->is_active == 1 ? __('admin/category.active') : __('admin/category.disable');
+        return $this->is_active == 0 ? __('admin/category.active') : __('admin/category.disable');
     }
     protected $translatedAttributes = ['name', 'description', 'short_description'];
     // protected $slugAttribute='name';
@@ -67,4 +67,11 @@ class Product extends Model
     {
         return $query->where('is_active', '1');
     }
+    public function Option(){
+       
+        return $this->hasMany('App\Models\Option', 'product_id');
+   
+}
+
+  
 }

@@ -24,6 +24,7 @@ class CategoryController extends Controller
         return view('admin.cat.create-cat',compact('cate'));
     }
     public function Store(CatValidationRequest $request){
+       
         try{
             DB::beginTransaction();
                 if ($request->has('is_active')){
@@ -34,10 +35,12 @@ class CategoryController extends Controller
                 if ($request->type == CategoryType::mainCategory){
                     $request->request->add(['parent_id'=> null]);
                 }
+            
                 $fileName="";
                 if($request->has('image')){
                     $fileName=$this->uploadImage('category',$request->image);
                 }
+              
                 $cat=Category::create($request->except('_token','image'));
                 $cat->name=$request->name;
                 $cat->image=$fileName;

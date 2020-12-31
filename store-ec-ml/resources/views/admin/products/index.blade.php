@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-            <a href="{{route('products.create.step.one')}}" class="bs-tooltip float-right mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Category">
+            <a href="{{route('products.create.generalInfo')}}" class="bs-tooltip float-right mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Category">
                     <i class="fal fa-folder-plus fa-4x"></i>
                     </a>
                 <div class="table-responsive mb-4">
@@ -52,7 +52,7 @@
 
                             <td>
                                   @foreach ($item->Categories as $indexKeys => $cate)
-                         {{ $cate->name}}
+                                  <i class="fad fa-long-arrow-right text-danger"></i> {{ $cate->name}}<br>
                          @endforeach
                             </td>
                             <td>{{$item->getStatus()}}</td>
@@ -64,12 +64,15 @@
                             </td>
                             <td>{{$item->created_at}}</td>
                              <td class="text-center">
-                                    {{-- <a href="{{route('delete.brands',$item->id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
-                                        <i class="fal fa-trash-alt fa-2x mr-2"></i>
+                                    <a href="{{ route('products.View.Stock',$item->id) }}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="stock">
+                                        <i class="fal fa-inventory fa-1x mr-2 text-danger"></i>
                                     </a>
-                                    <a href="{{route('edit.brands',$item->id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                        <i class="fal fa-edit fa-2x"></i>
-                                    </a> --}}
+                                    <a href="{{ route('products.View.Price',$item->id) }}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="price">
+                                        <i class="fal fa-dollar-sign fa-1x mr-2 text-danger"></i>
+                                    </a>
+                                    <a href="{{ route('products.View.Upload',$item->id) }}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="images">
+                                        <i class="fal fa-images fa-1x text-danger"></i>
+                                    </a>
                                     
                                 </td>
                             </tr>

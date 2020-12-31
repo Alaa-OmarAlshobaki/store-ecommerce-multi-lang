@@ -28,14 +28,22 @@
    <script src="{{asset('asset/admin/'.getFolderPlugins().'/jquery-step/custom-jquery.steps.js')}}"></script>
    <script src="{{asset('asset/admin/'.getFolderPlugins().'/select2/select2.min.js')}}"></script>
    <script src="{{asset('asset/admin/'.getFolderPlugins().'/select2/custom-select2.js')}}"></script>
-   
    <script src="{{asset('asset/admin/'.getFolderPlugins().'/editors/quill/quill.js')}}"></script>
    <script src="{{asset('asset/admin/'.getFolderPlugins().'/editors/quill/custom-quill.js')}}"></script>
    <script src="{{ asset('asset/admin/custom/custom.js') }}"></script>
-
+   <script src="{{asset('asset/admin/'.getFolderPlugins().'/lightbox/photoswipe.min.js')}}"></script>
+   <script src="{{asset('asset/admin/'.getFolderPlugins().'/lightbox/photoswipe-ui-default.min.js')}}"></script>
+   <script src="{{asset('asset/admin/'.getFolderPlugins().'/lightbox/custom-photswipe.js')}}"></script>
    <script>
     
+    $(document).on('change', '#mangStock', function() {
+        if($(this).val()==1 ){
+            $("#qty").removeClass("invisible");
 
+        }else{
+            $("#qty").addClass("invisible");
+        }
+});
     //Second upload
     var firstUpload = new FileUploadWithPreview('myFirstImage')
 
@@ -55,6 +63,8 @@
                     $('#cats_list').addClass('invisible');
                 }
    });
+  
+   
 
 
 
