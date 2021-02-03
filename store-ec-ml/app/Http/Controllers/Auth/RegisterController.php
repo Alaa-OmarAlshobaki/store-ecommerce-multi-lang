@@ -84,6 +84,7 @@ class RegisterController extends Controller
             $verification_data =  $this->sms_services->setVerificationCode($verification);
 
             $message = $this->sms_services->getSMSVerifyMessageByAppName($verification_data->verify_code);
+            // app(VictoryLinkSms::class) -> sendSms($user -> mobile,$message);
             DB::commit();
             return  $user;
 

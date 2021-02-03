@@ -48,28 +48,6 @@ class CartController extends Controller
         }
     }
 
-
-
-
-
-    // public function Destroy(Request $request)
-    // {
-    //     try {
-
-    //         $slug=$request->product_slug;
-    //         $item=Product::where('slug',$slug)->first();
-    //         if(!$item)
-    //         return "no product on this cart";
-    //         if($this->basket->has($item))
-    //         $this->basket->remove($item);
-    //         return response()->json(['status' => true, 'item' => true]);
-    //         return response()->json(['status' => true, 'item' => false]);
-
-    //     } catch (QuantityExceededException $e) {
-    //         return 'Quantity Exceeded';
-    //     }
-    // }
-
     public function DeleteItem($slug, Request $request)
     {
 
@@ -83,7 +61,7 @@ class CartController extends Controller
 
         if (!$request->quantity) {
             return array_merge([
-                'total' => num_format($this->basket->subTotal()) . " (" . money('symbol') . ")"
+                'total' => num_format($this->basket->subTotal()) 
             ]);
         }
     }

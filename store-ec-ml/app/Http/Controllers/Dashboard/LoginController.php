@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use Illuminate\Support\Facades\Session;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\validLogin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -23,7 +24,7 @@ class LoginController extends Controller
             'password' => $request['password'],
 
         );
-        if (Auth::guard('admin')->attempt($admin)) {
+        if (Auth::guard('admin')->attempt($request->only('email','password'))) {
             return redirect()->route('admin.index');
         }
 

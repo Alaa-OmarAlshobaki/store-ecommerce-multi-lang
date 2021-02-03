@@ -34,9 +34,8 @@ Route::group(
             "namespace" => "Site",
         ], function () {
             Route::get('/', 'HomeController@Index')->name('home')->middleware('VerifyMobile');
-            Route::get('category/{slug}','categoryController@CategoryBySlug')->name('cat-slug');
-            Route::get('single-product/{slug}','SingleProductController@Index')->name('single.product.view');
-        
+            Route::get('category/{slug}', 'categoryController@CategoryBySlug')->name('cat-slug');
+            Route::get('single-product/{slug}', 'SingleProductController@Index')->name('single.product.view');
         });
         Auth::routes();
         /**
@@ -59,20 +58,30 @@ Route::group(
         ], function () {
             Route::post('verifyUser/', 'VerificationCodeController@verify')->name('verify-user');
             Route::get('verify', 'VerificationCodeController@GetForm')->name('verifyPage');
-            Route::post('wishlist-product','WishListController@Store')->name('wishlist');
-            Route::get('view-wishlist','WishListController@Index')->name('view.wishlist');
-            Route::post('delete-product-wishlist','WishListController@Destroy')->name('delete.product.wishlist');
+            Route::post('wishlist-product', 'WishListController@Store')->name('wishlist');
+            Route::get('view-wishlist', 'WishListController@Index')->name('view.wishlist');
+            Route::post('delete-product-wishlist', 'WishListController@Destroy')->name('delete.product.wishlist');
 
-            Route::group([
-                "prefix" => "cart"]
-                ,function(){
-                    Route::get('view-cart','CartController@ViewCart')->name('view-cart');
-                    Route::post('add-to-cart/{slug?}','CartController@AddToCart')->name('add-cart');
-                   // Route::post('delete-item-cart/{id?}','CartController@Destroy')->name('delete-item');
-                    Route::post('/update/{slug}','CartController@DeleteItem')->name('remove-item');
-
-                });
-           
+            Route::group(
+                [
+                    "prefix" => "cart"
+                ],
+                function () {
+                    Route::get('view-cart', 'CartController@ViewCart')->name('view-cart');
+                    Route::post('add-to-cart/{slug?}', 'CartController@AddToCart')->name('add-cart');
+                    Route::post('/update/{slug}', 'CartController@DeleteItem')->name('remove-item');
+                }
+            );
+            Route::group(
+                [
+                    "prefix" => "payment"
+                ],
+                function () {
+                    Route::get('view-payment/{amount}', 'PaymentController@ViewPayment')->name('view-payment');
+                    Route::get('paymantProcess','PaymentController@processPayment')->name('payment.process');
+                    Route::post('paymantProcess','PaymentController@processPayment')->name('payment.process');
+                }
+            );
         });
         /**
          * guest

@@ -206,7 +206,7 @@
                 </div>
                 <!--header mini cart-->
 
-                <div class="header-cart style2">
+                {{-- <div class="header-cart style2">
                     <a href="{{ route('view-cart') }}" class="crt-btn drop-cart pe-7s-cart"> </a>
                     <div class="cart-count">
                         {{ $basket->itemCount() }} Items
@@ -246,7 +246,7 @@
                         </div>
                     </div>
                     <!--mini cart-->
-                </div>
+                </div> --}}
                 <!--header mini cart-->
             </div>
         </div>                

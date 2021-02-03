@@ -21,7 +21,6 @@
                  
                             @isset($basket)
                             @foreach($basket->all() as $item)
-                          {{ $item }}
                             
                         
                             <tr class="crt_itm">
@@ -50,7 +49,7 @@
                                     <input type="number" value="{{ $item->quantity }}" title="Qty" class="input-text qty" size="4">
                                 </td>
 
-                                <td class="pdt_subtotal" data-title="Total"></td> 
+                                <td class="pdt_subtotal" data-title="Total">{{ $item->special_price ? $item->special_price * $item->quantity:$item->price*$item->quantity }}</td> 
                             </tr>
                             @endforeach
                             @endisset
@@ -67,22 +66,22 @@
                         <tbody>
                             <tr>
                                 <td>Subtotal</td>
-                                <td>{{$basket -> subTotal()}}</td>
+                                <td>${{ $basket->subTotalQuan() }}</td>
                             </tr>
 
-                            <tr>
+                            {{-- <tr>
                                 <td>Shipping</td>
                                 <td>$25.00</td>
-                            </tr>
+                            </tr> --}}
 
                             <tr>
                                 <td>Grand Total</td>
-                                <td>$725.00</td>
+                                <td>${{ $basket->subTotalQuan() }}</td>
                             </tr>
                         </tbody>    
                     </table>
 
-                    <a class="btn pri-bg">PROCEED TO CHECKOUT</a>
+                    <a href="{{ route('view-payment',$basket->subTotalQuan()) }}" class="btn pri-bg">PROCEED TO CHECKOUT</a>
                 </div> 
             </div> 
         </form>               

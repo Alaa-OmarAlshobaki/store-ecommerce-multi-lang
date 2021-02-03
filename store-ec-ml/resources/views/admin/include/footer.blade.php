@@ -1,5 +1,30 @@
    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
    <script src="{{asset('asset/admin/assets/js/libs/jquery-3.1.1.min.js')}}"></script>
+   <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+   <script>
+
+    var previousCounter =$('#notify').val();
+    
+    
+      var notificationCount = parseInt(previousCounter);
+    
+          // Enable pusher logging - don't include this in production
+          Pusher.logToConsole = true;
+    
+    var pusher = new Pusher('19409a4fba1cfeb57873', {
+        // cluster: 'mt1'
+    encrypted:true
+    });
+    
+    var channel = pusher.subscribe('order');
+        channel.bind('App\\Events\\NewOrder', function(data) {
+            notificationCount += 1
+            console.log(notificationCount);
+             $('#notify').val(notificationCount);
+            
+    
+        });
+        </script>
    <script src="{{asset('asset/admin/bootstrap/js/popper.min.js')}}"></script>
    <script src="{{asset('asset/admin/bootstrap/js/bootstrap.min.js')}}"></script>
    <script src="{{asset('asset/admin/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
@@ -35,6 +60,26 @@
    <script src="{{asset('asset/admin/'.getFolderPlugins().'/lightbox/photoswipe-ui-default.min.js')}}"></script>
    <script src="{{asset('asset/admin/'.getFolderPlugins().'/lightbox/custom-photswipe.js')}}"></script>
    <script>
+
+var previousCounter =$('#notify').val();
+
+
+  var notificationCount = parseInt(previousCounter);
+
+      // Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
+
+var pusher = new Pusher('202e8556ec17d75b4b9c', {
+//   cluster: 'mt1'
+encrypted:true
+});
+
+var channel = pusher.subscribe('order');
+    channel.bind('App\\Events\\NewOrder;', function(data) {
+         notificationCount+=1
+         $('#notify').val(notificationCount);
+
+    });
     
     $(document).on('change', '#mangStock', function() {
         if($(this).val()==1 ){
@@ -63,6 +108,8 @@
                     $('#cats_list').addClass('invisible');
                 }
    });
+
+ 
   
    
 
